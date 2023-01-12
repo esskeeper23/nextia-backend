@@ -15,11 +15,13 @@ const Invitations = db.define('invitations', {
     },
     entryDate: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: false,
+        field: 'entry_date'
     },
     dateOfExpiry: {
         type: DataTypes.DATEONLY,
-        allowNull: false
+        allowNull: false,
+        field: 'date_of_expiry'
     },
     userId: {
         type: DataTypes.UUID,
