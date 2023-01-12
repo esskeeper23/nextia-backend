@@ -2,6 +2,16 @@ const uuid = require('uuid')
 
 const Invitations = require('../models/invitations.model')
 
+const createInvitation = async (data) => {
+    const response = await Invitations.create({
+        id: uuid.v4(),
+        name: data.name,
+        entryDate: data.entryDate,
+        dateOfExpiry: data.dateOfExpiry,
+        userId: data.userId
+    })
+}
+
 const getAllInvitations = async() => {
     const data = await Invitations.findAll()
     return data
@@ -27,5 +37,6 @@ const deteleInvitation = async(id) => {
 module.exports = {
     getAllInvitations,
     getInvitationById,
-    deteleInvitation
+    deteleInvitation,
+    createInvitation
 }
