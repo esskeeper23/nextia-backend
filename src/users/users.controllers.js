@@ -26,10 +26,9 @@ const createUser = async (data) => {
         lastName: data.lastName,
         email: data.email,
         password: hashPassword(data.password),
-        phone: data.phone,
         birthday: data.birthday,
         gender: data.gender,
-        country: data.country
+        apartmentNumber: data.apartmentNumber
     })
     return newUser
 }

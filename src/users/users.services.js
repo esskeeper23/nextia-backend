@@ -24,19 +24,19 @@ const getUserById = (req, res) => {
 };
 
 const registerUser = (req, res) => {
-  const {firstName, lastName, email, password, phone, birthday, gender, country } = req.body;
+  const {firstName, lastName, email, password, birthday, apartmentNumber } = req.body;
 
     if (
         firstName &&
         lastName &&
         email &&
         password &&
-        phone &&
-        birthday
+        birthday &&
+        apartmentNumber
     ) {
         //? Ejecutamos el controller
         usersControllers.createUser({
-            firstName, lastName, email, password, phone, birthday, gender, country
+            firstName, lastName, email, password, phone, birthday, apartmentNumber
         })
             .then( data => {
                 res.status(201).json(data)
@@ -51,18 +51,18 @@ const registerUser = (req, res) => {
             lastName: 'string',
             email: 'example@example.com',
             password: 'string',
-            phone: '+521231231231',
-            birthday: 'YYYY/MM/DD'
+            birthday: 'YYYY/MM/DD',
+            apartmentNumber: 'string'
         }})
     }
 };
 
 const patchUser = (req, res) => {
   const id = req.params.id;
-  const { firstName, lastName, phone, gender, country } = req.body;
+  const { firstName, lastName, phone } = req.body;
 
   usersControllers
-    .updateUser(id, { firstName, lastName, phone, gender, country })
+    .updateUser(id, { firstName, lastName, phone })
     .then((data) => {
       if (data[0]) {
         res
@@ -111,10 +111,10 @@ const deleteMyUser = (req, res) => {
 
 const updateMyUser = (req, res) => {
   const id = req.user.id;
-  const { firstName, lastName, phone, gender, country } = req.body;
+  const { firstName, lastName, phone } = req.body;
 
   usersControllers
-    .updateUser(id, { firstName, lastName, phone, gender, country })
+    .updateUser(id, { firstName, lastName, phone })
     .then((data) => {
       if (data[0]) {
         res
