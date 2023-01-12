@@ -30,25 +30,14 @@ const Users = db.define("users", {
     type: DataTypes.STRING,
     allowNull: false
   },
-  phone: {
-    type: DataTypes.STRING, // +52 
-    allowNull: false,
-    unique: true
-  },
   birthday: {
     type: DataTypes.DATEONLY,
     allowNull: false,
-  },
-  gender: {
-    type: DataTypes.STRING,
   },
   role: {
     type: DataTypes.STRING,
     allowNull: false,
     defaultValue: 'normal'
-  },
-  country: {
-    type: DataTypes.STRING,
   },
   status: {
     type: DataTypes.STRING,
@@ -61,6 +50,12 @@ const Users = db.define("users", {
     field: 'is_verified',
     defaultValue: false
   },
+  apartmentNumber: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+    field: 'apartment_number'
+  }
 });
 
 module.exports = Users
