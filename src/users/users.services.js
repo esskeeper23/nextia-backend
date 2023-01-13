@@ -36,7 +36,7 @@ const registerUser = (req, res) => {
     ) {
         //? Ejecutamos el controller
         usersControllers.createUser({
-            firstName, lastName, email, password, phone, birthday, apartmentNumber
+            firstName, lastName, email, password, birthday, apartmentNumber
         })
             .then( data => {
                 res.status(201).json(data)
@@ -59,10 +59,10 @@ const registerUser = (req, res) => {
 
 const patchUser = (req, res) => {
   const id = req.params.id;
-  const { firstName, lastName, phone } = req.body;
+  const { firstName, lastName } = req.body;
 
   usersControllers
-    .updateUser(id, { firstName, lastName, phone })
+    .updateUser(id, { firstName, lastName })
     .then((data) => {
       if (data[0]) {
         res
@@ -111,10 +111,10 @@ const deleteMyUser = (req, res) => {
 
 const updateMyUser = (req, res) => {
   const id = req.user.id;
-  const { firstName, lastName, phone } = req.body;
+  const { firstName, lastName } = req.body;
 
   usersControllers
-    .updateUser(id, { firstName, lastName, phone })
+    .updateUser(id, { firstName, lastName })
     .then((data) => {
       if (data[0]) {
         res
