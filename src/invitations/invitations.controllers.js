@@ -33,6 +33,7 @@ const deteleInvitation = async(id) => {
             id
         }
     })
+    return data
 }
 
 module.exports = {
