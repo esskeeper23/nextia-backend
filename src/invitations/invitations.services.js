@@ -1,11 +1,12 @@
 const invitationsControllers = require('./invitations.controllers')
 
 const postInvitation = (req, res) => {
+    const userId = req.user.id
     const {name, entryDate, dateOfExpiry} = req.body
 
     if (name && entryDate && dateOfExpiry) {
         invitationsControllers.createInvitation({
-            name, entryDate, dateOfExpiry
+            name, entryDate, dateOfExpiry, userId
         })
             .then(data => {
                 res.status(201).json(data)
