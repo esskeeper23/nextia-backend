@@ -10,6 +10,7 @@ const createInvitation = async (data) => {
         dateOfExpiry: data.dateOfExpiry,
         userId: data.userId
     })
+    return response
 }
 
 const getAllInvitations = async() => {
