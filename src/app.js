@@ -9,6 +9,8 @@ const userRouter = require('./users/users.router')
 const authRouter = require('./auth/auth.router')
 const invitationsRouter = require('./invitations/invitations.router')
 
+const initModels = require('./models/initModels')
+
 //? Initial Configs
 const app = express()
 
@@ -30,7 +32,7 @@ db.sync()
         console.log(err)
     })
 
-
+initModels()
 
 
 app.get('/',(req, res) => {
